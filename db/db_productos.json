@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "nombre": "nombre del producto1",
+        "img": "NikeAirMax90.jpg",
+        "existencias": "10",
+        "precio": "10",
+        "descripcion": "la descripcion del producto"
+    },
+    {
+        "id": 2,
+        "nombre": "nombre del producto2",
+        "img": "Force017.jpg",
+        "existencias": "30",
+        "precio": "10",
+        "descripcion": "la descripcion del producto"
+    },
+    {
+        "id": 3,
+        "nombre": "nombre del producto3",
+        "img": "ForceShadow1.jpg",
+        "existencias": "cant_unidades_disponibles",
+        "precio": "10",
+        "descripcion": "la descripcion del producto"
+    }
+]
