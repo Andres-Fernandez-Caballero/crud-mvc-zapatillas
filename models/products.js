@@ -12,7 +12,7 @@ const Producto = {
     },
 
     getById: (id) => {
-        const producto = productos.find( prod => prod.id === id);
+        const producto = productos.find( prod => String(prod.id) === id);
         return producto;
     },
 

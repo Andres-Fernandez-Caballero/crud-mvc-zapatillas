@@ -6,21 +6,28 @@
     <main>
         <div class="fondo-juan">
         <div class="producto-juan">
-            <div class="nombre-producto-juan">NIKE</div>
-            <img src="images/zapatilla.jpg" alt="">
+            <img src="/images/products/<%= producto.img %>" alt="imagen de una zapatilla">
             <div class="texto-bajo-foto-juan"><p>foto del producto</p></div>
         </div>
         <div class="descripcion-producto-juan">
             
-            <div class="nombre-juan">ZAPATILLAS NIKE </div>
-            <div class="precio-juan">$12.449</div>
+            <div class="nombre-juan"><p><%= producto.nombre %></p></div>
+            <div class="precio-juan">$<%= producto.precio %> </div>
             <div class="cuotas-juan">6 cuotas sin interes de $2.075</div>
+            <div class="cuotas-color-completar"><p><%= producto.color %> </p></div>
             <div class="mas-vendido-juan"><h3>Más vendido</h3></div>
-            <div class="descripcion-juan"><p>Zapatillas Nike Air Zoom Pegasus 38</p></div>
+            <div class="descripcion-juan"><p><%= producto.descripcion %> </p></div>
             <div class="devolucion-juan"><i class="fas fa-undo-alt">Devolución sin costo</i></div>
             <div class="envio-juan"><i class="fas fa-truck">Envio gratis en el país</i> </div>
             <br>
             <div class="comprar-juan">COMPRAR</div>
+            <div 
+                class="comprar-juan" 
+                style=" margin: 4px;background-color: crimson; color:antiquewhite">
+                <form action="/<%= producto.id %>_method=DELETE" method="POST">
+                    <button type="submit">ELIMINAR</button>
+                </form>
+            </div>
            
         </div>
     </div>

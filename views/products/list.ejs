@@ -1,5 +1,12 @@
-<ul>
-    <% listaProductos.forEach(function(prod) { %>
-       <li> nombre:<%= prod.nombre %> precio:<%= prod.precio %> <img src="/images/products/<%= prod.img %> "</li>
-    <% }); %> 
-</ul>
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../partials/head") %>
+<body>
+    <%- include("../partials/header") %>
+    <ul>
+        <% listaProductos.forEach(function(prod) { %>
+           <li>id: <%= prod.id %> - nombre:<%= prod.nombre %> <a href="products/detalle/<%=prod.id%>">ir</a></li>
+        <% }); %> 
+    </ul>
+    <%- include("../partials/footer") %>
+</body>

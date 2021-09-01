@@ -12,9 +12,9 @@ const controlador = {
   },
 
   detalle: (req, res) => {
-    res.render("products/detalle", {
-      mensaje: "hola",
-    });
+    const id = req.params.id
+    const producto = Producto.getById(id);
+    res.render('products/detalle', {producto: producto});
   },
   carrito: (req, res) => {
     res.render("products/carrito");
@@ -55,9 +55,20 @@ const controlador = {
         errors: errors.array(),
       });
     }
-
     res.redirect("/");
   },
+
+  remove: (req, res) => {
+      const id = req.params.id;
+      
+      const producto = Producto.getById(id);
+      
+      const listaProductos = Producto.getAll().filter(prod => prod.id != id);
+      Producto.modifiedAll(listaProductos);
+
+      console.log(listaProductos);
+      res.send(listaProductos);
+  }
 };
 
 module.exports = controlador;
