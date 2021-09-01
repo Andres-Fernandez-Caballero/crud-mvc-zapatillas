@@ -3,9 +3,10 @@ const express = require("express")
 const multer = require('multer');
 const path = require("path");
 
-const { body } = require('express-validator')
+//const { body } = require('express-validator')
 
 /*** devielve los errores de los formularios ***/
+/*
 const validateProduct = [
     body('nombre-producto').notEmpty().withMessage('Debe Completar Este campo'),
     //body('price').isInt({min: 1}).withMessage('El campo precio tiene que ser un numero mayor a 1'),
@@ -13,7 +14,7 @@ const validateProduct = [
     //body('category').notEmpty().withMessage('Debe Completar Este campo'),
     //body('description').notEmpty().withMessage('Debe Completar Este campo').bail().isLength({min:0,max:200}).withMessage('Tiene que escribir menos de 200 carateres'),
 ]
-
+*/
 /***  multer se encarga de almacenar archivos en el servidor express ***/
 const storage = multer.diskStorage({
     destination: (req,file,callback)=>{
