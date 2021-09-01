@@ -44,5 +44,8 @@ router.get("/create", productosController.create); // miestra la vista para crea
 
 router.post("/create", uploadFile.single("imagen"), productosController.store); // procesa y almacena el producto
 
-router.delete("/:id", productosController.remove)
+router.get('/create/:1', productosController.update)
+
+router.delete("/delete/:id", productosController.remove);
+
 module.exports = router;

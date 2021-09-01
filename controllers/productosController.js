@@ -14,6 +14,7 @@ const controlador = {
   detalle: (req, res) => {
     const id = req.params.id
     const producto = Producto.getById(id);
+    //res.send(producto);
     res.render('products/detalle', {producto: producto});
   },
   carrito: (req, res) => {
@@ -58,16 +59,19 @@ const controlador = {
     res.redirect("/");
   },
 
+  update: (req, res) => {
+    const id = req.params.id
+    const producto = Producto.getById(id);
+    res.send(producto)
+    //res.render('/products/create', {producto: producto});
+  },
+
   remove: (req, res) => {
       const id = req.params.id;
-      
-      const producto = Producto.getById(id);
-      
+      //const producto = Producto.getById(id);
       const listaProductos = Producto.getAll().filter(prod => prod.id != id);
       Producto.modifiedAll(listaProductos);
-
-      console.log(listaProductos);
-      res.send(listaProductos);
+      res.render('products/list', {listaProductos: listaProductos})
   }
 };
 

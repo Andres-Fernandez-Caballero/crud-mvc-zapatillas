@@ -17,10 +17,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.set("view engine", "ejs");
+app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, "/public")));
 app.use("/", mainRoutes);
 app.use("/products", productsRoutes);
 app.use("/users", usersRoutes);
 app.listen(port, () => 
-console.log("Levantando un servidor con Express en el puerto"+port)
+console.log("Levantando un servidor con Express en el puerto" + port)
 )

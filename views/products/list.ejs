@@ -5,7 +5,7 @@
     <%- include("../partials/header") %>
     <ul>
         <% listaProductos.forEach(function(prod) { %>
-           <li>id: <%= prod.id %> - nombre:<%= prod.nombre %> <a href="products/detalle/<%=prod.id%>">ir</a></li>
+           <li>id: <%= prod.id %> - nombre:<%= prod.nombre %> <a href="/products/detalle/<%=prod.id%>">ir</a></li>
         <% }); %> 
     </ul>
     <%- include("../partials/footer") %>
