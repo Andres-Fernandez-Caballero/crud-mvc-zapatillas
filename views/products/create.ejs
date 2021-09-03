@@ -8,14 +8,14 @@
         <form action="/products/create" method="POST" enctype="multipart/form-data">
             <p class="cre-titulo">NUEVO PRODUCTO</p>
 
-            <% producto %> 
+             
 
             <label for="nombre-producto">Nombre del producto</label> <br>
             <input 
                 type="text" 
                 name="nombre" 
                 id="nombre"
-                value="" > 
+                value="<%= producto? producto.nombre: '' %>" > 
             <br>
 
             <label for="descripción">Descripción</label> <br>

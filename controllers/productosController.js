@@ -62,8 +62,9 @@ const controlador = {
   update: (req, res) => {
     const id = req.params.id
     const producto = Producto.getById(id);
-    res.send(producto)
-    //res.render('/products/create', {producto: producto});
+    console.log(producto);
+    //res.send(producto)
+    res.render('products/create', {producto: producto});
   },
 
   remove: (req, res) => {
@@ -71,7 +72,7 @@ const controlador = {
       //const producto = Producto.getById(id);
       const listaProductos = Producto.getAll().filter(prod => prod.id != id);
       Producto.modifiedAll(listaProductos);
-      res.render('products/list', {listaProductos: listaProductos})
+      res.render('products/list', { listaProductos: listaProductos })
   }
 };
 
