@@ -5,7 +5,8 @@
     <%- include("../partials/header") %>
     <ul>
         <% listaProductos.forEach(function(prod) { %>
-           <li><p>id: <%= prod.id %> - nombre:<%= prod.nombre %> <a href="/products/detalle/<%=prod.id%>">ir</a></p></li>
+           <li>
+               <p>nombre:<%= prod.nombre %> <a href="/products/detalle/<%=prod.id%>">ir</a></p><img src="/images/products/<%=prod.img %>" height="30" width="30"></li>
         <% }); %> 
     </ul>
     <%- include("../partials/footer") %>

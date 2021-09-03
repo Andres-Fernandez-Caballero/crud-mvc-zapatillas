@@ -1,6 +1,8 @@
 const { render } = require("ejs");
 const { validationResult } = require("express-validator");
 const Producto = require("../models/products");
+const colores = require('../models/colores');
+const categorias = require('../models/categorias');
 const { v4: uuidv4 } = require("uuid");
 
 const controlador = {
@@ -21,7 +23,10 @@ const controlador = {
     res.render("products/carrito");
   },
   create: (req, res) => {
-    res.render("products/create");
+    res.render("products/create", {
+      colores: colores,
+      categorias: categorias
+    });
   },
   store: (req, res) => {
     let errors = validationResult(req);
@@ -31,20 +36,19 @@ const controlador = {
 
       // al mapear creo un nuevo array sin modificar el existente
       let nuevaListaProductos = Producto.getAll().map((prod) => prod);
-      let { nombre, descripcion, categoria, color } = req.body;
+      const { nombre,precio, descripcion, categoria, color } = req.body;
       file = req.file;
       if(!file){
         // manejo algun error
       }
-      console.log("soy la imagen");
-      console.log(file);
-      let productoId = uuidv4();
+      let productoId = uuidv4(); // genero un id unico y aleatorio
 
       const nuevoProducto = {
         id: productoId,
         nombre: nombre,
+        precio: precio,
         descripcion: descripcion,
-        img: req.file.filename,
+        img: file.filename,
         categoria: categoria,
         color: color,
       };
@@ -64,7 +68,40 @@ const controlador = {
     const producto = Producto.getById(id);
     console.log(producto);
     //res.send(producto)
-    res.render('products/create', {producto: producto});
+    res.render('products/create', {
+      producto: producto,
+      colores: colores,
+      categorias: categorias
+    });
+  },
+
+  put: (req, res) => {
+    const id = req.params.id;
+    const producto = Producto.getById(id);
+
+    const {nombre, categoria, precio, color, descripcion} = req.body;
+
+    file = req.file;
+    if (file){
+      producto.img = file.filename;
+    }
+
+    producto.nombre = nombre;
+    producto.precio = precio;
+    producto.descripcion = descripcion;
+    producto.categoria = categoria;
+    producto.color = color;
+
+    listaProductos = Producto.getAll();
+    listaProductos.forEach(prod => {
+      if(prod.id === producto.id){
+        prod = producto
+      }
+    });
+
+    Producto.modifiedAll(listaProductos);
+
+    res.redirect('/');
   },
 
   remove: (req, res) => {
