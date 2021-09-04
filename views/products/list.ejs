@@ -4,9 +4,13 @@
 <body>
     <%- include("../partials/header") %>
     <ul>
-        <% listaProductos.forEach(function(prod) { %>
-           <li>
-               <p>nombre:<%= prod.nombre %> <a href="/products/detalle/<%=prod.id%>">ir</a></p><img src="/images/products/<%=prod.img %>" height="30" width="30"></li>
+        <% listaProductos.forEach(function(producto) { %>
+           <li style="display: flex">
+                <div>
+                    <p>Nombre: <%= producto.nombre %> --- <a href="/products/detalle/<%=producto.id%>">Ir</a></p>
+                    <img width="60" height="60"  src="/images/products/<%=producto.img %>">
+                </div>
+            </li>
         <% }); %> 
     </ul>
     <%- include("../partials/footer") %>
